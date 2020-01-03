@@ -16,7 +16,9 @@ Rectangle
         Image
         {
             id: cross
-            source: "file:/home/mylove/web-work/20-uranium/Idx_Uranium/img/cross.svg"
+            source: "crossT.svg"
+            sourceSize.width: parent.width
+            sourceSize.height: parent.height
             anchors.right: parent.right
             width: 15
             height: 15
