@@ -9,8 +9,7 @@ ApplicationWindow {
     visible: true
     width: 800
     height: 600
-    title: qsTr("WebEngineAction Example")
-    minimumWidth: 500
+    title: qsTr("Uranium")
 
     header: ToolBar {
         RowLayout {
@@ -48,8 +47,10 @@ ApplicationWindow {
 
                 text: webEngineView.url
                 selectByMouse: true
-                onEditingFinished: webEngineView.url = text
 
+                //TODO onClicked: webEngineView.url = ctrl + A
+
+                onEditingFinished: webEngineView.url = /* "https://" + */ text
             }
 
             ToolButton {
@@ -78,7 +79,7 @@ ApplicationWindow {
 
     WebEngineView {
         id: webEngineView
-        url: "http://google.com"
+        url: "https://google.com"
         anchors.fill: parent
 
         Component.onCompleted: {

@@ -4,7 +4,7 @@
 
 int main(int argc, char *argv[])
 {
-    QCoreApplication::setOrganizationName("QtExamples");
+    QCoreApplication::setOrganizationName("Uranium");
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QtWebEngine::initialize();
 
