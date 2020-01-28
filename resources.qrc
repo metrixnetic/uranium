@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ApplicationRoot.qml</file>
+        <file>BrowserDialog.qml</file>
+        <file>BrowserWindow.qml</file>
+        <file>DownloadView.qml</file>
+        <file>FindBar.qml</file>
+        <file>FullScreenNotification.qml</file>
+    </qresource>
+    <qresource prefix="/icons">
+        <file alias="view-refresh.png">icons/3rdparty/view-refresh.png</file>
+        <file>next.svg</file>
+        <file>previous.svg</file>
+    </qresource>
+</RCC>
