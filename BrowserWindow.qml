@@ -346,17 +346,19 @@ ApplicationWindow {
 
     TabView {
         id: tabs
+        width: browserWindow.width / 1.8
         function createEmptyTab(profile) {
-            var tab = addTab("", tabComponent);
+            var tab = addTab("new tab", tabComponent);
             // We must do this first to make sure that tab.active gets set so that tab.item gets instantiated immediately.
             tab.active = true;
             tab.title = Qt.binding(function() { return tab.item.title });
             tab.item.profile = profile;
             return tab;
+
         }
 
         anchors.top: parent.top
-        anchors.bottom: devToolsView.top
+        anchors.bottom: devToolsView.bottom
         anchors.left: parent.left
         anchors.right: parent.right
         Component.onCompleted: createEmptyTab(defaultProfile)
@@ -376,7 +378,7 @@ ApplicationWindow {
                 color: styleData.selected ? fillColor : nonSelectedColor
                 border.width: 1
                 border.color: frameColor
-                implicitWidth: Math.max(text.width + 40, 100)
+                implicitWidth: Math.max(50, 100)
                 implicitHeight: Math.max(text.height + 10, 20)
                 Rectangle { height: 1 ; width: parent.width ; color: frameColor}
                 Rectangle { height: parent.height ; width: 1; color: frameColor}
@@ -417,7 +419,7 @@ ApplicationWindow {
                             color: control.hovered ? "#ccc" : tabRectangle.color
                             Text {text: "+" ; anchors.centerIn: parent ; color: "gray"}
                         }}
-                    onClicked: tabs.addTab(styleData.index);
+                    onClicked: tabs.createEmptyTab(styleData.index);
                 }
             }
         }
