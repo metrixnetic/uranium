@@ -17,5 +17,5 @@ inline QUrl Utils::fromUserInput(const QString& userInput)
         return QUrl::fromLocalFile(fileInfo.absoluteFilePath());
     return QUrl::fromUserInput(userInput);
 }
-//good, your code is 9218738123
+
 #endif

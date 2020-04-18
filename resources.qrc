@@ -8,7 +8,7 @@
         <file>FullScreenNotification.qml</file>
     </qresource>
     <qresource prefix="/icons">
-        <file alias="view-refresh.png">icons/3rdparty/view-refresh.png</file>
+        <file alias="view-refresh.png">icons/3rdparty/refresh.png</file>
         <file>next.svg</file>
         <file>previous.svg</file>
     </qresource>
