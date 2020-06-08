@@ -8,8 +8,16 @@
         <file>FullScreenNotification.qml</file>
     </qresource>
     <qresource prefix="/icons">
-        <file alias="view-refresh.png">icons/3rdparty/refresh.png</file>
-        <file>next.svg</file>
-        <file>previous.svg</file>
+        <file alias="view-refresh.png">refresh-24px.svg</file>
+        <file alias="menu.svg">more_vert-24px.svg</file>
+        <file alias="history.svg">menu-24px.svg</file>
+        <file alias="refresh-stop.svg">close-24px.svg</file>
+        <file alias="previous.svg">arrow_forward_ios-24px.svg</file>
+        <file alias="back.svg">arrow_back_ios-24px.svg</file>
+        <file alias="logo.svg">logo.svg</file>
+        <file alias="close.svg">clear-white-18dp.svg</file>
+        <file alias="add.svg">add-black-18dp.svg</file>
+        <file alias="download.svg">get_app-black-18dp.svg</file>
+        <file alias="dark.svg">61412.svg</file>
     </qresource>
 </RCC>

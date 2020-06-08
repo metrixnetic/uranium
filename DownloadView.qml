@@ -4,10 +4,10 @@ import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.0
 import QtWebEngine 1.9
 import QtQuick.Layouts 1.0
+import QtQuick.Controls.Universal 2.12
 
 Rectangle {
     id: downloadView
-    color: "lightgray"
 
     ListModel {
         id: downloadModel
@@ -106,7 +106,7 @@ Rectangle {
         }
 
         Rectangle {
-            color: "gray"
+            color: "light gray"
             anchors {
                 bottom: parent.bottom
                 left: parent.left
