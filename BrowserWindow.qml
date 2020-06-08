@@ -183,7 +183,6 @@ ApplicationWindow {
         }
         anchors {
             top: parent.top
-            topMargin: 1
             bottom: devToolsView.bottom
             left: parent.left
             right: parent.right
@@ -210,7 +209,7 @@ ApplicationWindow {
                 clip: true
                 anchors.top: parent.top
 
-                implicitWidth: Math.max(50, 100)
+                implicitWidth: Math.max(120, 100)
                 implicitHeight: Math.max(text.height + 10, 20)
 
                 Text {
@@ -262,6 +261,14 @@ ApplicationWindow {
             WebEngineView {
                 id: webEngineView
                 focus: true
+
+                anchors {
+                    top: parent.top
+                    topMargin: 20
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
+                }
 
                 onLinkHovered: function(hoveredUrl) {
                     if (hoveredUrl == "")
