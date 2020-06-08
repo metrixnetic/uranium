@@ -24,6 +24,3 @@ qtHaveModule(widgets) {
 
 INSTALLS += target
 
-FORMS += \
-    cookiedialog.ui \
-    cookiewidget.ui

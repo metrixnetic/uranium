@@ -19,8 +19,8 @@ ApplicationWindow {
     property Item currentWebView: tabs.currentIndex < tabs.count ? tabs.getTab(tabs.currentIndex).item : null
     property int previousVisibility: Window.Windowed
 
-    width: 4096
-    height: 3072
+    width: 1280
+    height: 720
     visible: true
     title: currentWebView && currentWebView.title
 
@@ -184,6 +184,7 @@ ApplicationWindow {
         anchors {
             top: parent.top
             bottom: devToolsView.bottom
+            bottomMargin: 15
             left: parent.left
             right: parent.right
         }
@@ -203,9 +204,9 @@ ApplicationWindow {
             tab: Rectangle {
                 id: tabRectangle
                 width: 600
-                height: 23
+                height: 24
                 color: styleData.selected ? '#C4C4C4' : '#DDDDDD'
-                radius: 5
+                radius: 4
                 clip: true
                 anchors.top: parent.top
 
@@ -261,10 +262,11 @@ ApplicationWindow {
             WebEngineView {
                 id: webEngineView
                 focus: true
-
+                width: browserWindow.__width
+                height: 666
                 anchors {
                     top: parent.top
-                    topMargin: 20
+                    topMargin: 25
                     bottom: parent.bottom
                     left: parent.left
                     right: parent.right
@@ -414,13 +416,13 @@ ApplicationWindow {
     ToolBar {
         id: navigationBar
         implicitWidth: browserWindow.__width
-        implicitHeight: 30
+        implicitHeight: 35
             RowLayout {
                 anchors.fill: parent
                 ToolButton {
                     enabled: currentWebView && (currentWebView.canGoBack && currentWebView.canGoForward)
                     anchors.verticalCenter: ToolButton.verticalCenter;
-                    Layout.bottomMargin: 48
+                    //Layout.bottomMargin: 1
                     iconSource: "icons/history.svg"
                     menu:Menu {
                         id: historyMenu
@@ -451,7 +453,7 @@ ApplicationWindow {
                     onClicked: currentWebView.goBack()
                     enabled: currentWebView && currentWebView.canGoBack
                     activeFocusOnTab: !browserWindow.platformIsMac
-                    Layout.bottomMargin: 48
+                    //Layout.bottomMargin: 1
                     anchors.verticalCenter: ToolButton.verticalCenter;
                 }
                 ToolButton {
@@ -460,7 +462,7 @@ ApplicationWindow {
                     onClicked: currentWebView.goForward()
                     enabled: currentWebView && currentWebView.canGoForward
                     activeFocusOnTab: !browserWindow.platformIsMac
-                    Layout.bottomMargin: 48
+                    //Layout.bottomMargin: 1
                     anchors.verticalCenter: ToolButton.verticalCenter;
                 }
                 ToolButton {
@@ -468,7 +470,7 @@ ApplicationWindow {
                     iconSource: currentWebView && currentWebView.loading ? "icons/refresh-stop.svg" : "icons/view-refresh.png"
                     onClicked: currentWebView && currentWebView.loading ? currentWebView.stop() : currentWebView.reload()
                     activeFocusOnTab: !browserWindow.platformIsMac
-                    Layout.bottomMargin: 48
+                    //Layout.bottomMargin: 1
                     anchors.verticalCenter: ToolButton.verticalCenter;
                 }
                 TextField {
@@ -496,7 +498,7 @@ ApplicationWindow {
                         }
                     }
                     anchors.verticalCenter: TextField.verticalCenter;
-                    Layout.bottomMargin: 52
+                    //Layout.bottomMargin: 1
                     focus: true
                     Layout.fillWidth: true
                     text: currentWebView && currentWebView.url
@@ -508,14 +510,14 @@ ApplicationWindow {
                 ToolButton {
                     id: downloadlist
                     iconSource: "icons/download.svg"
-                    Layout.bottomMargin: 48
+                    //Layout.bottomMargin: 1
                     anchors.verticalCenter: ToolButton.verticalCenter;
                     onClicked: downloadView.visible = !downloadView.visible
                 }
                 ToolButton {
                     id: settingsMenuButton
                     iconSource: "icons/menu.svg"
-                    Layout.bottomMargin: 48
+                    //Layout.bottomMargin: 1
                     anchors.verticalCenter: ToolButton.verticalCenter;
                     menu: Menu {
                         MenuItem {
