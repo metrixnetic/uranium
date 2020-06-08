@@ -13,7 +13,8 @@ OTHER_FILES += ApplicationRoot.qml \
                FindBar.qml \
                FullScreenNotification.qml
 
-RESOURCES += resources.qrc
+
+RESOURCES += resources.qrc \
 
 QT += qml quick webengine
 
@@ -22,3 +23,7 @@ qtHaveModule(widgets) {
 }
 
 INSTALLS += target
+
+FORMS += \
+    cookiedialog.ui \
+    cookiewidget.ui
