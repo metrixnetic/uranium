@@ -20,7 +20,7 @@ static QUrl startupUrl()
         if (ret.isValid())
             return ret;
     }
-    return QUrl(QStringLiteral("https:/google.com"));
+    return QUrl(QStringLiteral("https://google.com"));
 }
 
 int main(int argc, char **argv)
