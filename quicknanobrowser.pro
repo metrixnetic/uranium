@@ -23,7 +23,6 @@ OTHER_FILES += ApplicationRoot.qml \
 RESOURCES += resources.qrc \
 
 QT += qml quick webengine
-QT += network
 
 qtHaveModule(widgets) {
     QT += widgets
