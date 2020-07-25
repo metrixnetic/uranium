@@ -1,3 +1,4 @@
+
 import Qt.labs.settings 1.0
 import QtQml 2.2
 import QtQuick 2.2
@@ -8,9 +9,6 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.1
 import QtWebEngine 1.10
-import QtWebKit 3.0
-import QtQuick.Controls.Universal 2.12
-import QtQuick.Controls.Material 2.12
 
 ApplicationWindow {
     id: browserWindow
@@ -183,6 +181,7 @@ ApplicationWindow {
         anchors {
             top: parent.top
             bottom: devToolsView.bottom
+            bottomMargin: 20
             left: parent.left
             right: parent.right
         }
@@ -204,7 +203,7 @@ ApplicationWindow {
                 width: 600
                 height: 25
                 color: styleData.selected ? '#C4C4C4' : '#DDDDDD'
-                radius: 4
+                radius: 5
                 clip: true
                 anchors.top: parent.top
 
@@ -261,6 +260,13 @@ ApplicationWindow {
                 id: webEngineView
                 focus: true
 
+                anchors {
+                    top: parent.top
+                    topMargin: 25
+                    bottom: parent.bottom
+                    left: parent.left
+                    right: parent.right
+                }
 
                 onLinkHovered: function(hoveredUrl) {
                     if (hoveredUrl == "")
@@ -406,7 +412,7 @@ ApplicationWindow {
     ToolBar {
         id: navigationBar
         implicitWidth: browserWindow.__width
-        implicitHeight: 35
+        implicitHeight: 32
             RowLayout {
                 anchors.fill: parent
                 ToolButton {
