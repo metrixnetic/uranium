@@ -1,4 +1,3 @@
-
 import Qt.labs.settings 1.0
 import QtQml 2.2
 import QtQuick 2.2
@@ -203,9 +202,9 @@ ApplicationWindow {
             tab: Rectangle {
                 id: tabRectangle
                 width: 600
-                height: 23
+                height: 25
                 color: styleData.selected ? '#C4C4C4' : '#DDDDDD'
-                radius: 5
+                radius: 4
                 clip: true
                 anchors.top: parent.top
 
@@ -262,13 +261,6 @@ ApplicationWindow {
                 id: webEngineView
                 focus: true
 
-                anchors {
-                    top: parent.top
-                    topMargin: 20
-                    bottom: parent.bottom
-                    left: parent.left
-                    right: parent.right
-                }
 
                 onLinkHovered: function(hoveredUrl) {
                     if (hoveredUrl == "")
@@ -414,7 +406,7 @@ ApplicationWindow {
     ToolBar {
         id: navigationBar
         implicitWidth: browserWindow.__width
-        implicitHeight: 30
+        implicitHeight: 35
             RowLayout {
                 anchors.fill: parent
                 ToolButton {
@@ -606,7 +598,7 @@ ApplicationWindow {
             }
             anchors {
                 top: parent.top
-                topMargin: 20
+                topMargin: 22
                 left: parent.left
                 right: parent.right
             }

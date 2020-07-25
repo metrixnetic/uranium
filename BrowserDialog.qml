@@ -7,7 +7,7 @@ Window {
     property alias currentWebView: webView
     flags: Qt.Dialog | Qt.WindowStaysOnTopHint
     width: 800
-    height: 600
+    height: 50
     visible: true
     onClosing: destroy()
     WebEngineView {
