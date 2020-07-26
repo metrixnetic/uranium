@@ -181,7 +181,7 @@ ApplicationWindow {
         anchors {
             top: parent.top
             bottom: devToolsView.bottom
-            bottomMargin: 20
+            bottomMargin: 25
             left: parent.left
             right: parent.right
         }
