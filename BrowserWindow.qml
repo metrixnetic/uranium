@@ -8,15 +8,14 @@ import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.1
 import QtWebEngine 1.10
-import QtWebKit 3.0
-import QtQuick.Controls.Universal 2.12
-import QtQuick.Controls.Material 2.12
 
 ApplicationWindow {
     id: browserWindow
     property QtObject applicationRoot
     property Item currentWebView: tabs.currentIndex < tabs.count ? tabs.getTab(tabs.currentIndex).item : null
     property int previousVisibility: Window.Windowed
+
+
 
     width: 4096
     height: 3072
@@ -28,7 +27,9 @@ ApplicationWindow {
 
     onCurrentWebViewChanged: {
         findBar.reset();
+
     }
+
 
     // Create a styleItem to determine the platform.
     // When using style "mac", ToolButtons are not supposed to accept focus.
@@ -183,6 +184,7 @@ ApplicationWindow {
         anchors {
             top: parent.top
             bottom: devToolsView.bottom
+            bottomMargin: 20
             left: parent.left
             right: parent.right
         }
@@ -261,6 +263,13 @@ ApplicationWindow {
                 id: webEngineView
                 focus: true
 
+                anchors {
+                        top: parent.top
+                        topMargin: 25
+                        bottom: parent.bottom
+                        left: parent.left
+                        right: parent.right
+                    }
 
                 onLinkHovered: function(hoveredUrl) {
                     if (hoveredUrl == "")
@@ -406,7 +415,7 @@ ApplicationWindow {
     ToolBar {
         id: navigationBar
         implicitWidth: browserWindow.__width
-        implicitHeight: 35
+        implicitHeight: 32
             RowLayout {
                 anchors.fill: parent
                 ToolButton {
