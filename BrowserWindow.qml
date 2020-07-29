@@ -16,6 +16,8 @@ ApplicationWindow {
     property Item currentWebView: tabs.currentIndex < tabs.count ? tabs.getTab(tabs.currentIndex).item : null
     property int previousVisibility: Window.Windowed
 
+
+
     width: 4096
     height: 3072
     visible: true
@@ -26,7 +28,9 @@ ApplicationWindow {
 
     onCurrentWebViewChanged: {
         findBar.reset();
+
     }
+
 
     // Create a styleItem to determine the platform.
     // When using style "mac", ToolButtons are not supposed to accept focus.
