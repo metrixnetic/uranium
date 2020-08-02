@@ -1,4 +1,4 @@
-# TODO end up before 3 augey
+# TODO end up before 6 augey
 - [ ] - закончить все тудушки
 - [ ] - тор ркжим
 - [ ] - история
