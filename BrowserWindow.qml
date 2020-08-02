@@ -1,4 +1,4 @@
-// imports
+
 import Qt.labs.settings 1.0
 import QtQml 2.2
 import QtQuick 2.2
@@ -10,13 +10,13 @@ import QtQuick.Layouts 1.0
 import QtQuick.Window 2.1
 import QtWebEngine 1.10
 
-
-// Main window of browser
 ApplicationWindow {
     id: browserWindow
     property QtObject applicationRoot
     property Item currentWebView: tabs.currentIndex < tabs.count ? tabs.getTab(tabs.currentIndex).item : null
     property int previousVisibility: Window.Windowed
+
+
 
     width: 4096
     height: 3072
@@ -170,7 +170,6 @@ ApplicationWindow {
         onTriggered: findBar.findPrevious()
     }
 
-    //Tabs and Tabbar
     TabView {
         id: tabs
         width: browserWindow.width / 1.8
@@ -186,7 +185,7 @@ ApplicationWindow {
         anchors {
             top: parent.top
             bottom: devToolsView.bottom
-            bottomMargin: 25
+            bottomMargin: 22
             left: parent.left
             right: parent.right
         }
@@ -259,13 +258,12 @@ ApplicationWindow {
             }
         }
 
-        //Web content of browser
         Component {
             id: tabComponent
             WebEngineView {
                 id: webEngineView
                 focus: true
-                width: browserWindow.__width
+
                 anchors {
                     top: parent.top
                     topMargin: 25
@@ -359,7 +357,6 @@ ApplicationWindow {
                     request.accept();
                 }
 
-                // If smth crash
                 onRenderProcessTerminated: function(terminationStatus, exitCode) {
                     var status = "";
                     switch (terminationStatus) {
@@ -416,13 +413,13 @@ ApplicationWindow {
         }
     }
 
-    // Toolbar
     ToolBar {
         id: navigationBar
         implicitWidth: browserWindow.__width
         implicitHeight: 32
             RowLayout {
                 anchors.fill: parent
+                anchors.bottomMargin: 10
                 ToolButton {
                     enabled: currentWebView && (currentWebView.canGoBack && currentWebView.canGoForward)
                     anchors.verticalCenter: ToolButton.verticalCenter;
@@ -515,9 +512,17 @@ ApplicationWindow {
                     id: downloadlist
                     iconSource: "icons/download.svg"
                     Layout.bottomMargin: 48
-                    anchors.verticalCenter: ToolButton.verticalCenter;
-                    onClicked: downloadView.visible = !downloadView.visible
-                }
+                    PauseAnimation { id: pause; duration: 100}
+                    OpacityAnimator { id:opacityAnimation; target:downloadView; duration: 300; from: 0.50; to: 1}
+                    ScaleAnimator { id:scaleAnimation; target:downloadView; duration: 200; from: 0; to: 1}
+
+                    onClicked: {            
+                        pause.running = true
+                        opacityAnimation.running = true;scaleAnimation.running = true
+                        pause.running = true
+                       downloadView.visible = !downloadView.visible
+                    }
+              }
                 ToolButton {
                     id: settingsMenuButton
                     iconSource: "icons/menu.svg"
@@ -624,8 +629,6 @@ ApplicationWindow {
             color: '#C4C4C4'
         }
       }
-
-      // Loading string
       ProgressBar {
                 id: progressBar
                 height: 3
@@ -646,7 +649,7 @@ ApplicationWindow {
             }
     }
 
-    // Dev tools
+
     WebEngineView {
         id: devToolsView
         visible: devToolsEnabled.checked
@@ -709,6 +712,7 @@ ApplicationWindow {
         download.accept();
     }
 
+
     FindBar {
         id: findBar
         visible: false
@@ -758,3 +762,4 @@ ApplicationWindow {
         }
     }
 }
+
