@@ -1,4 +1,4 @@
-
+// imports
 import Qt.labs.settings 1.0
 import QtQml 2.2
 import QtQuick 2.2
@@ -10,13 +10,13 @@ import QtQuick.Layouts 1.0
 import QtQuick.Window 2.1
 import QtWebEngine 1.10
 
+
+// Main window of browser
 ApplicationWindow {
     id: browserWindow
     property QtObject applicationRoot
     property Item currentWebView: tabs.currentIndex < tabs.count ? tabs.getTab(tabs.currentIndex).item : null
     property int previousVisibility: Window.Windowed
-
-
 
     width: 4096
     height: 3072
@@ -170,6 +170,7 @@ ApplicationWindow {
         onTriggered: findBar.findPrevious()
     }
 
+    //Tabs and Tabbar
     TabView {
         id: tabs
         width: browserWindow.width / 1.8
@@ -258,12 +259,13 @@ ApplicationWindow {
             }
         }
 
+        //Web content of browser
         Component {
             id: tabComponent
             WebEngineView {
                 id: webEngineView
                 focus: true
-
+                width: browserWindow.__width
                 anchors {
                     top: parent.top
                     topMargin: 25
@@ -357,6 +359,7 @@ ApplicationWindow {
                     request.accept();
                 }
 
+                // If smth crash
                 onRenderProcessTerminated: function(terminationStatus, exitCode) {
                     var status = "";
                     switch (terminationStatus) {
@@ -413,6 +416,7 @@ ApplicationWindow {
         }
     }
 
+    // Toolbar
     ToolBar {
         id: navigationBar
         implicitWidth: browserWindow.__width
@@ -620,6 +624,8 @@ ApplicationWindow {
             color: '#C4C4C4'
         }
       }
+
+      // Loading string
       ProgressBar {
                 id: progressBar
                 height: 3
@@ -640,7 +646,7 @@ ApplicationWindow {
             }
     }
 
-
+    // Dev tools
     WebEngineView {
         id: devToolsView
         visible: devToolsEnabled.checked
