@@ -18,13 +18,16 @@ ApplicationWindow {
     property Item currentWebView: tabs.currentIndex < tabs.count ? tabs.getTab(tabs.currentIndex).item : null
     property int previousVisibility: Window.Windowed
 
-    width: 4096
-    height: 3072
+    width: 1920
+    height: 1280
     visible: true
     title: currentWebView && currentWebView.title
 
     // Make sure the Qt.WindowFullscreenButtonHint is set on OS X.
-    Component.onCompleted: flags = flags | Qt.WindowFullscreenButtonHint
+    Component.onCompleted: {
+        flags = flags | Qt.WindowFullscreenButtonHint
+        browserWindow.showMaximized()
+    }
 
     onCurrentWebViewChanged: {
         findBar.reset();
