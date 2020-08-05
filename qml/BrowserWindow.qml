@@ -234,7 +234,7 @@ ApplicationWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.rightMargin: 1
                     height: 12
-                    iconSource: "icons/close.svg"
+                    iconSource: "../icons/close-24px.svg"
                     style: ButtonStyle {
                         background: Rectangle {
                             implicitWidth: 30
@@ -250,7 +250,7 @@ ApplicationWindow {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.rightMargin: 10
                     height: 15
-                    iconSource: "icons/add.svg"
+                    iconSource: "../icons/arrow_back_ios-24px.svg"
                     style: ButtonStyle {
                         background: Rectangle {
                             implicitWidth: 10
@@ -430,7 +430,7 @@ ApplicationWindow {
                     enabled: currentWebView && (currentWebView.canGoBack && currentWebView.canGoForward)
                     anchors.verticalCenter: ToolButton.verticalCenter;
                     Layout.bottomMargin: 48
-                    iconSource: "icons/history.svg"
+                    iconSource: "../icons/history-24.png"
                     menu:Menu {
                         id: historyMenu
 
@@ -456,7 +456,7 @@ ApplicationWindow {
 
                 ToolButton {
                     id: backButton
-                    iconSource: "icons/back.svg"
+                    iconSource: "../icons/arrow_back_ios-24px.svg"
                     onClicked: currentWebView.goBack()
                     enabled: currentWebView && currentWebView.canGoBack
                     activeFocusOnTab: !browserWindow.platformIsMac
@@ -465,7 +465,7 @@ ApplicationWindow {
                 }
                 ToolButton {
                     id: forwardButton
-                    iconSource: "icons/previous.svg"
+                    iconSource: "../icons/arrow_forward_ios-24px.svg"
                     onClicked: currentWebView.goForward()
                     enabled: currentWebView && currentWebView.canGoForward
                     activeFocusOnTab: !browserWindow.platformIsMac
@@ -474,7 +474,7 @@ ApplicationWindow {
                 }
                 ToolButton {
                     id: reloadButton
-                    iconSource: currentWebView && currentWebView.loading ? "icons/refresh-stop.svg" : "icons/view-refresh.png"
+                    iconSource: currentWebView && currentWebView.loading ? "../icons/close-24px.svg" : "../icons/refresh-24px.svg"
                     onClicked: currentWebView && currentWebView.loading ? currentWebView.stop() : currentWebView.reload()
                     activeFocusOnTab: !browserWindow.platformIsMac
                     Layout.bottomMargin: 48
@@ -516,14 +516,14 @@ ApplicationWindow {
                 }
                 ToolButton {
                     id: downloadlist
-                    iconSource: "icons/download.svg"
+                    iconSource: "../icons/get_app-black-18dp.svg"
                     Layout.bottomMargin: 48
                     anchors.verticalCenter: ToolButton.verticalCenter;
                     onClicked: downloadView.visible = !downloadView.visible
                 }
                 ToolButton {
                     id: settingsMenuButton
-                    iconSource: "icons/menu.svg"
+                    iconSource: "../icons/menu-24px.svg"
                     Layout.bottomMargin: 48
                     anchors.verticalCenter: ToolButton.verticalCenter;
                     menu: Menu {
