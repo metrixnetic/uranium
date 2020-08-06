@@ -24,10 +24,7 @@ ApplicationWindow {
     title: currentWebView && currentWebView.title
 
     // Make sure the Qt.WindowFullscreenButtonHint is set on OS X.
-    Component.onCompleted: {
-        flags = flags | Qt.WindowFullscreenButtonHint
-        browserWindow.showMaximized()
-    }
+    Component.onCompleted: flags = flags | Qt.WindowFullscreenButtonHint
 
     onCurrentWebViewChanged: {
         findBar.reset();
@@ -209,7 +206,7 @@ ApplicationWindow {
             tab: Rectangle {
                 id: tabRectangle
                 width: 600
-                height: 25
+                height: 28
                 color: styleData.selected ? '#C4C4C4' : '#DDDDDD'
                 radius: 5
                 clip: true
@@ -423,13 +420,13 @@ ApplicationWindow {
     ToolBar {
         id: navigationBar
         implicitWidth: browserWindow.__width
-        implicitHeight: 32
+        implicitHeight: 37
             RowLayout {
                 anchors.fill: parent
                 ToolButton {
                     enabled: currentWebView && (currentWebView.canGoBack && currentWebView.canGoForward)
                     anchors.verticalCenter: ToolButton.verticalCenter;
-                    Layout.bottomMargin: 48
+                    Layout.bottomMargin: 53
                     iconSource: "icons/history.svg"
                     menu:Menu {
                         id: historyMenu
@@ -460,7 +457,7 @@ ApplicationWindow {
                     onClicked: currentWebView.goBack()
                     enabled: currentWebView && currentWebView.canGoBack
                     activeFocusOnTab: !browserWindow.platformIsMac
-                    Layout.bottomMargin: 48
+                    Layout.bottomMargin: 53
                     anchors.verticalCenter: ToolButton.verticalCenter;
                 }
                 ToolButton {
@@ -469,7 +466,7 @@ ApplicationWindow {
                     onClicked: currentWebView.goForward()
                     enabled: currentWebView && currentWebView.canGoForward
                     activeFocusOnTab: !browserWindow.platformIsMac
-                    Layout.bottomMargin: 48
+                    Layout.bottomMargin: 53
                     anchors.verticalCenter: ToolButton.verticalCenter;
                 }
                 ToolButton {
@@ -477,7 +474,7 @@ ApplicationWindow {
                     iconSource: currentWebView && currentWebView.loading ? "icons/refresh-stop.svg" : "icons/view-refresh.png"
                     onClicked: currentWebView && currentWebView.loading ? currentWebView.stop() : currentWebView.reload()
                     activeFocusOnTab: !browserWindow.platformIsMac
-                    Layout.bottomMargin: 48
+                    Layout.bottomMargin: 53
                     anchors.verticalCenter: ToolButton.verticalCenter;
                 }
                 TextField {
@@ -499,13 +496,13 @@ ApplicationWindow {
                         background: Rectangle {
                             radius: 20
                             implicitWidth: 100
-                            implicitHeight: 24
+                            implicitHeight: 26
                             border.color: '#fff'
                             border.width: 2
                         }
                     }
                     anchors.verticalCenter: TextField.verticalCenter;
-                    Layout.bottomMargin: 52
+                    Layout.bottomMargin: 53
                     focus: true
                     Layout.fillWidth: true
                     text: currentWebView && currentWebView.url
@@ -517,14 +514,14 @@ ApplicationWindow {
                 ToolButton {
                     id: downloadlist
                     iconSource: "icons/download.svg"
-                    Layout.bottomMargin: 48
+                    Layout.bottomMargin: 53
                     anchors.verticalCenter: ToolButton.verticalCenter;
                     onClicked: downloadView.visible = !downloadView.visible
                 }
                 ToolButton {
                     id: settingsMenuButton
                     iconSource: "icons/menu.svg"
-                    Layout.bottomMargin: 48
+                    Layout.bottomMargin: 53
                     anchors.verticalCenter: ToolButton.verticalCenter;
                     menu: Menu {
                         MenuItem {
@@ -615,7 +612,7 @@ ApplicationWindow {
             }
             anchors {
                 top: parent.top
-                topMargin: 22
+                topMargin: 25
                 left: parent.left
                 right: parent.right
             }
