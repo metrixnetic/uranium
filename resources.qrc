@@ -19,11 +19,13 @@
         <file>icons/more_vert-24px.svg</file>
         <file>icons/refresh-24px.svg</file>
         <file>qml/ApplicationRoot.qml</file>
-        <file>qml/BrowserDialog.qml</file>
         <file>qml/BrowserWindow.qml</file>
         <file>qml/DownloadView.qml</file>
         <file>qml/FindBar.qml</file>
         <file>qml/FullScreenNotification.qml</file>
+        <file>qml/BrowserTools.qml</file>
+        <file>qml/BrowserTabView.qml</file>
+        <file>qml/CustomResizer.qml</file>
     </qresource>
     <qresource prefix="/icons"/>
 </RCC>

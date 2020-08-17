@@ -8,6 +8,8 @@ typedef QApplication Application;
 #include <QtQml/QQmlContext>
 #include <QtWebEngine/qtwebengineglobal.h>
 
+#include <QtQuickControls2/QQuickStyle>
+
 static QUrl startupUrl()
 {
     QUrl ret;
@@ -26,11 +28,26 @@ static QUrl startupUrl()
 int main(int argc, char **argv)
 {
     QCoreApplication::setOrganizationName("Metrixnetic");
+    // qt.conf
+    //    [Platforms]
+    //    WindowsArguments = dpiawareness=0
+
+    // попробуй, раскомментируй
+//      qputenv("QT_SCALE_FACTOR", "2.0");
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+    QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
+    QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
+        Qt::HighDpiScaleFactorRoundingPolicy::PassThrough);
+    //  Qt::Round
+    //  Qt::Ceil
+    //  Qt::Floor
+    //  Qt::RoundPreferFloor
+    //  Qt::PassThrough
     QtWebEngine::initialize();
 
     Application app(argc, argv);
-
+    QQuickStyle::setStyle("Material");
     QQmlApplicationEngine appEngine;
     Utils utils;
     appEngine.rootContext()->setContextProperty("utils", &utils);

@@ -18,9 +18,6 @@ QtObject {
         applicationRoot: root
         onClosing: destroy()
     }
-    property Component browserDialogComponent: BrowserDialog {
-        onClosing: destroy()
-    }
     function createWindow(profile) {
         var newWindow = browserWindowComponent.createObject(root);
         newWindow.currentWebView.profile = profile;
