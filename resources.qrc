@@ -1,23 +1,31 @@
 <RCC>
     <qresource prefix="/">
-        <file>ApplicationRoot.qml</file>
-        <file>BrowserDialog.qml</file>
-        <file>BrowserWindow.qml</file>
-        <file>DownloadView.qml</file>
-        <file>FindBar.qml</file>
-        <file>FullScreenNotification.qml</file>
+        <file>icons/3rdparty/COPYING</file>
+        <file>icons/3rdparty/go-previous.png</file>
+        <file>icons/3rdparty/process-stop.png</file>
+        <file>icons/3rdparty/qt_attribution.json</file>
+        <file>icons/3rdparty/refresh.png</file>
+        <file>icons/61412.svg</file>
+        <file>icons/add-black-18dp.svg</file>
+        <file>icons/arrow_back_ios-24px.svg</file>
+        <file>icons/arrow_forward_ios-24px.svg</file>
+        <file>icons/clear-white-18dp.svg</file>
+        <file>icons/close-24px.svg</file>
+        <file>icons/get_app-black-18dp.svg</file>
+        <file>icons/history-32.png</file>
+        <file>icons/logo.svg</file>
+        <file>icons/menu-24px.svg</file>
+        <file>icons/moon.svg</file>
+        <file>icons/more_vert-24px.svg</file>
+        <file>icons/refresh-24px.svg</file>
+        <file>qml/ApplicationRoot.qml</file>
+        <file>qml/BrowserWindow.qml</file>
+        <file>qml/DownloadView.qml</file>
+        <file>qml/FindBar.qml</file>
+        <file>qml/FullScreenNotification.qml</file>
+        <file>qml/BrowserTools.qml</file>
+        <file>qml/BrowserTabView.qml</file>
+        <file>qml/CustomResizer.qml</file>
     </qresource>
-    <qresource prefix="/icons">
-        <file alias="view-refresh.png">refresh-24px.svg</file>
-        <file alias="menu.svg">more_vert-24px.svg</file>
-        <file alias="history.svg">menu-24px.svg</file>
-        <file alias="refresh-stop.svg">close-24px.svg</file>
-        <file alias="previous.svg">arrow_forward_ios-24px.svg</file>
-        <file alias="back.svg">arrow_back_ios-24px.svg</file>
-        <file alias="logo.svg">logo.svg</file>
-        <file alias="close.svg">clear-white-18dp.svg</file>
-        <file alias="add.svg">add-black-18dp.svg</file>
-        <file alias="download.svg">get_app-black-18dp.svg</file>
-        <file alias="dark.svg">61412.svg</file>
-    </qresource>
+    <qresource prefix="/icons"/>
 </RCC>
