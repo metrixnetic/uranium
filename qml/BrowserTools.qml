@@ -76,7 +76,7 @@ ToolBar {
             focus: true
             Layout.fillWidth: true
             selectByMouse: true
-            font.pointSize: 14
+            font.pointSize: 12
             verticalAlignment: TextField.AlignVCenter
             text: currentWebView && currentWebView.url
             onAccepted: {
@@ -86,7 +86,7 @@ ToolBar {
             Image {
                 id: pageIcon
                 x: 10
-                y: 12
+                y: 7
                 z: 2
                 width: 18; height: 18
                 sourceSize: Qt.size(width, height)

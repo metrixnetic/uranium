@@ -8,14 +8,17 @@ import QtQuick.Controls.Private 1.0 as QQCPrivate
 import QtQuick.Controls.Styles 1.0
 import QtQuick.Dialogs 1.2
 import QtQuick.Layouts 1.0
-import QtQuick.Window 2.1
+import QtQuick.Window 2.2
 import QtWebEngine 1.10
 
 import QtQuick.Controls.Material 2.12
 
+import QtUranium.Window 1.0
+
+import "custom"
 
 // Main window of browser
-ApplicationWindow {
+Window {
     id: browserWindow
 
 
@@ -43,15 +46,11 @@ ApplicationWindow {
     visible: true
     title: currentWebView && currentWebView.title
 
+    flags: Qt.Window | Qt.FramelessWindowHint | Qt.WindowFullscreenButtonHint
     // Make sure the Qt.WindowFullscreenButtonHint is set on OS X.
-    Component.onCompleted: {
-        flags = flags | Qt.WindowFullscreenButtonHint | Qt.FramelessWindowHint
-        browserWindow.showMaximized()
-    }
 
     onCurrentWebViewChanged: {
         findBar.reset();
-
     }
 
     Material.theme: Material.Light
@@ -196,60 +195,64 @@ ApplicationWindow {
     }
 
 
-
     // TODO .|.
 
     // Declare properties that will store the position of the mouse cursor
-    property int previousX
-    property int previousY
+//    property int previousX
+//    property int previousY
 
 
-    // The central area for moving the application window
-    // Here you already need to use the position both along the X axis and the Y axis
-    MouseArea {
-        anchors {
-            top: parent.top
-            topMargin: 3
-            left: parent.left
-            leftMargin: 3
-            right: parent.right
-            rightMargin: 3
-        }
+//    // The central area for moving the application window
+//    // Here you already need to use the position both along the X axis and the Y axis
+//    MouseArea {
+//        anchors {
+//            top: parent.top
+//            topMargin: 3
+//            left: parent.left
+//            leftMargin: 3
+//            right: parent.right
+//            rightMargin: 3
+//        }
 
-        height: 35
+//        height: 35
 
-        onPressed: {
-            previousX = mouseX
-            previousY = mouseY
-        }
+//        onPressed: {
+//            previousX = mouseX
+//            previousY = mouseY
+//        }
 
-        onMouseXChanged: {
-            var dx = mouseX - previousX
-            browserWindow.setX(browserWindow.x + dx)
-        }
+//        onMouseXChanged: {
+//            var dx = mouseX - previousX
+//            browserWindow.setX(browserWindow.x + dx)
+//        }
 
-        onMouseYChanged: {
-            var dy = mouseY - previousY
-            browserWindow.setY(browserWindow.y + dy)
+//        onMouseYChanged: {
+//            var dy = mouseY - previousY
+//            browserWindow.setY(browserWindow.y + dy)
+//        }
+//    }
+
+
+    FramelessHelper {
+        id: framelessHelper
+
+        titleBarHeight: 35
+
+        Component.onCompleted: {
+            addExcludeItem(tabs)
+            addExcludeItem(controls)
         }
     }
-
 
     BrowserTabView{
         id: tabs
-    }
-
-    Controls2.Button {
-        anchors.left: tabs.right
-        anchors.leftMargin: 10
-        height: 15
-        icon.source: "../icons/add-black-18dp.svg"
-        onClicked: tabs.createEmptyTab(defaultProfile);
+        onExcludesAdded: {
+//            tas.getTab(0).item.children[0]
+        }
     }
 
     BrowserTools{
         id: tools
-
         onGoForward: {
             currentWebView.goForward()
         }
@@ -353,25 +356,29 @@ ApplicationWindow {
         }
     }
 
-
-    // resizing window
-    CustomResizer{
-        anchors.fill: parent
-        size: 3
+    ThreeButtons{
+        id: controls
+        helper: framelessHelper
     }
 
-    // TODO
-    Controls2.Button{
-        id: closeButton
-        icon.source: "../icons/close-24px.svg"
-        height: 35
-        width: height + 20
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.rightMargin: 5
-        highlighted: true
-        onClicked: {
-            Qt.quit()
-        }
-    }
+//    // resizing window
+//    CustomResizer{
+//        anchors.fill: parent
+//        size: 3
+//    }
+
+//    // TODO
+//    Controls2.Button{
+//        id: closeButton
+//        icon.source: "../icons/close-24px.svg"
+//        height: 35
+//        width: height + 20
+//        anchors.top: parent.top
+//        anchors.right: parent.right
+//        anchors.rightMargin: 5
+//        highlighted: true
+//        onClicked: {
+//            Qt.quit()
+//        }
+//    }
 }

@@ -26,6 +26,20 @@
         <file>qml/BrowserTools.qml</file>
         <file>qml/BrowserTabView.qml</file>
         <file>qml/CustomResizer.qml</file>
+        <file>qml/custom/CloseButton.qml</file>
+        <file>qml/custom/MaximizeButton.qml</file>
+        <file>qml/custom/MinimizeButton.qml</file>
+        <file>qml/custom/ThreeButtons.qml</file>
+        <file>qml/custom/WindowBorder.qml</file>
+        <file>icons/close-button1.png</file>
+        <file>icons/close-button1.svg</file>
+        <file>icons/close-button2.png</file>
+        <file>icons/maximize-button1.png</file>
+        <file>icons/maximize-button1.svg</file>
+        <file>icons/maximize-button2.png</file>
+        <file>icons/maximize-button2.svg</file>
+        <file>icons/minimize-button1.png</file>
+        <file>icons/minimize-button1.svg</file>
     </qresource>
     <qresource prefix="/icons"/>
 </RCC>

@@ -10,6 +10,8 @@ typedef QApplication Application;
 
 #include <QtQuickControls2/QQuickStyle>
 
+#include <FramelessHelper/WindowFramelessHelper.h>
+
 static QUrl startupUrl()
 {
     QUrl ret;
@@ -25,6 +27,10 @@ static QUrl startupUrl()
     return QUrl(QStringLiteral("https://google.com"));
 }
 
+inline void registerTypes() {
+    qmlRegisterType<WindowFramelessHelper>("QtUranium.Window", 1, 0, "FramelessHelper");
+}
+
 int main(int argc, char **argv)
 {
     QCoreApplication::setOrganizationName("Metrixnetic");
@@ -35,6 +41,7 @@ int main(int argc, char **argv)
     // попробуй, раскомментируй
 //      qputenv("QT_SCALE_FACTOR", "2.0");
 
+    QApplication::setAttribute(Qt::AA_UseSoftwareOpenGL);
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     QCoreApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
     QGuiApplication::setHighDpiScaleFactorRoundingPolicy(
@@ -47,7 +54,9 @@ int main(int argc, char **argv)
     QtWebEngine::initialize();
 
     Application app(argc, argv);
-    QQuickStyle::setStyle("Material");
+
+//    QQuickStyle::setStyle("Material");
+    registerTypes();
     QQmlApplicationEngine appEngine;
     Utils utils;
     appEngine.rootContext()->setContextProperty("utils", &utils);
