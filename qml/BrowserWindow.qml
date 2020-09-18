@@ -15,7 +15,7 @@ import QtQuick.Controls.Material 2.12
 
 
 // Main window of browser
-ApplicationWindow {
+Controls2.ApplicationWindow {
     id: browserWindow
 
 
@@ -25,7 +25,6 @@ ApplicationWindow {
 
 
     // for window movement
-    property bool maximalized: false
     property point startMousePos
     property point startWindowPos
     property size startWindowSize
@@ -48,6 +47,7 @@ ApplicationWindow {
         flags = flags | Qt.WindowFullscreenButtonHint | Qt.FramelessWindowHint
         browserWindow.showMaximized()
     }
+
 
     onCurrentWebViewChanged: {
         findBar.reset();
@@ -361,17 +361,48 @@ ApplicationWindow {
     }
 
     // TODO
-    Controls2.Button{
-        id: closeButton
-        icon.source: "../icons/close-24px.svg"
-        height: 35
-        width: height + 20
+
+    Row{
+        id: btnRow
         anchors.top: parent.top
         anchors.right: parent.right
-        anchors.rightMargin: 5
-        highlighted: true
-        onClicked: {
-            Qt.quit()
+        Controls2.Button{
+            id: rollUpButton
+            icon.source: "../icons/minimize_window_26.png"
+            height: 30
+            width: height + 30
+            icon.width: 30
+            icon.height: 30
+            flat: true
+            onClicked: {
+                browserWindow.visibility = Window.Minimized
+            }
+        }
+
+
+        Controls2.Button{
+            id: maximizeMinimizeButton
+            icon.source: "../icons/maximize_window_26.png"
+            height: 30
+            width: height + 30
+            icon.width: 30
+            icon.height: 30
+            flat: true
+            onClicked: {
+                browserWindow.visibility =  browserWindow.visibility === Window.Maximized? Window.Windowed : Window.Maximized
+            }
+        }
+
+        Controls2.Button{
+            id: closeButton
+            icon.source: "../icons/close_window_26.png"
+            height: 30
+            width: height + 30
+            icon.width: 30
+            icon.height: 30
+            onClicked: {
+                Qt.quit()
+            }
         }
     }
 }
