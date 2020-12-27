@@ -26,6 +26,9 @@
         <file>qml/BrowserTools.qml</file>
         <file>qml/BrowserTabView.qml</file>
         <file>qml/CustomResizer.qml</file>
+        <file>icons/close_window_26.png</file>
+        <file>icons/minimize_window_26.png</file>
+        <file>icons/maximize_window_26.png</file>
     </qresource>
     <qresource prefix="/icons"/>
 </RCC>

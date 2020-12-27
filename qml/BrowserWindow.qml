@@ -15,7 +15,7 @@ import QtQuick.Controls.Material 2.12
 
 
 // Main window of browser
-ApplicationWindow {
+Controls2.ApplicationWindow {
     id: browserWindow
 
 
@@ -25,7 +25,6 @@ ApplicationWindow {
 
 
     // for window movement
-    property bool maximalized: false
     property point startMousePos
     property point startWindowPos
     property size startWindowSize
@@ -45,9 +44,10 @@ ApplicationWindow {
 
     // Make sure the Qt.WindowFullscreenButtonHint is set on OS X.
     Component.onCompleted: {
-        flags = flags | Qt.WindowFullscreenButtonHint | Qt.FramelessWindowHint
+        flags = flags | Qt.WindowFullscreenButtonHint /*| Qt.FramelessWindowHint*/
         browserWindow.showMaximized()
     }
+
 
     onCurrentWebViewChanged: {
         findBar.reset();
@@ -206,46 +206,46 @@ ApplicationWindow {
 
     // The central area for moving the application window
     // Here you already need to use the position both along the X axis and the Y axis
-    MouseArea {
-        anchors {
-            top: parent.top
-            topMargin: 3
-            left: parent.left
-            leftMargin: 3
-            right: parent.right
-            rightMargin: 3
-        }
+//    MouseArea {
+//        anchors {
+//            top: parent.top
+//            topMargin: 3
+//            left: parent.left
+//            leftMargin: 3
+//            right: parent.right
+//            rightMargin: 3
+//        }
 
-        height: 35
+//        height: 35
 
-        onPressed: {
-            previousX = mouseX
-            previousY = mouseY
-        }
+//        onPressed: {
+//            previousX = mouseX
+//            previousY = mouseY
+//        }
 
-        onMouseXChanged: {
-            var dx = mouseX - previousX
-            browserWindow.setX(browserWindow.x + dx)
-        }
+//        onMouseXChanged: {
+//            var dx = mouseX - previousX
+//            browserWindow.setX(browserWindow.x + dx)
+//        }
 
-        onMouseYChanged: {
-            var dy = mouseY - previousY
-            browserWindow.setY(browserWindow.y + dy)
-        }
-    }
+//        onMouseYChanged: {
+//            var dy = mouseY - previousY
+//            browserWindow.setY(browserWindow.y + dy)
+//        }
+//    }
 
 
     BrowserTabView{
         id: tabs
     }
 
-    Controls2.Button {
-        anchors.left: tabs.right
-        anchors.leftMargin: 10
-        height: 15
-        icon.source: "../icons/add-black-18dp.svg"
-        onClicked: tabs.createEmptyTab(defaultProfile);
-    }
+//    Controls2.Button {
+//        anchors.left: tabs.right
+//        anchors.leftMargin: 10
+//        height: 15
+//        icon.source: "../icons/add-black-18dp.svg"
+//        onClicked: tabs.createEmptyTab(defaultProfile);
+//    }
 
     BrowserTools{
         id: tools
@@ -355,23 +355,54 @@ ApplicationWindow {
 
 
     // resizing window
-    CustomResizer{
-        anchors.fill: parent
-        size: 3
-    }
+//    CustomResizer{
+//        anchors.fill: parent
+//        size: 3
+//    }
 
     // TODO
-    Controls2.Button{
-        id: closeButton
-        icon.source: "../icons/close-24px.svg"
-        height: 35
-        width: height + 20
-        anchors.top: parent.top
-        anchors.right: parent.right
-        anchors.rightMargin: 5
-        highlighted: true
-        onClicked: {
-            Qt.quit()
-        }
-    }
+
+//    Row{
+//        id: btnRow
+//        anchors.top: parent.top
+//        anchors.right: parent.right
+//        Controls2.Button{
+//            id: rollUpButton
+//            icon.source: "../icons/minimize_window_26.png"
+//            height: 30
+//            width: height + 30
+//            icon.width: 30
+//            icon.height: 30
+//            flat: true
+//            onClicked: {
+//                browserWindow.visibility = Window.Minimized
+//            }
+//        }
+
+
+//        Controls2.Button{
+//            id: maximizeMinimizeButton
+//            icon.source: "../icons/maximize_window_26.png"
+//            height: 30
+//            width: height + 30
+//            icon.width: 30
+//            icon.height: 30
+//            flat: true
+//            onClicked: {
+//                browserWindow.visibility =  browserWindow.visibility === Window.Maximized? Window.Windowed : Window.Maximized
+//            }
+//        }
+
+//        Controls2.Button{
+//            id: closeButton
+//            icon.source: "../icons/close_window_26.png"
+//            height: 30
+//            width: height + 30
+//            icon.width: 30
+//            icon.height: 30
+//            onClicked: {
+//                Qt.quit()
+//            }
+//        }
+//    }
 }

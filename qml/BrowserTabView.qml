@@ -10,7 +10,7 @@ import QtWebEngine 1.10
 TabView {
     id: tabs
 //    width: browserWindow.width * 0.8
-    clip: true
+    clip: false
     function createEmptyTab(profile) {
         var tab = addTab("new tab", tabComponent);
         // We must do this first to make sure that tab.active gets set so that tab.item gets instantiated immediately.
@@ -37,6 +37,7 @@ TabView {
         property color fillColor: "#eee"
         property color nonSelectedColor: "#ddd"
         frameOverlap: 1
+        tabsMovable: true
         frame: Rectangle {
             color: "#fff"
             border.color: frameColor
@@ -82,20 +83,20 @@ TabView {
                 onClicked: tabs.removeTab(styleData.index);
             }
 
-//            Button {
-//                anchors.left: parent.left
-//                anchors.verticalCenter: parent.verticalCenter
-//                anchors.rightMargin: 10
-//                height: 15
-//                iconSource: "../icons/add-black-18dp.svg"
-//                style: ButtonStyle {
-//                    background: Rectangle {
-//                        implicitWidth: 10
-//                        implicitHeight: 10
-//                        color: control.hovered ? "#ccc" : tabRectangle.color
-//                    }}
-//                onClicked: tabs.createEmptyTab(defaultProfile);
-//            }
+            Button {
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.rightMargin: 10
+                height: 15
+                iconSource: "../icons/add-black-18dp.svg"
+                style: ButtonStyle {
+                    background: Rectangle {
+                        implicitWidth: 10
+                        implicitHeight: 10
+                        color: control.hovered ? "#ccc" : tabRectangle.color
+                    }}
+                onClicked: tabs.createEmptyTab(defaultProfile);
+            }
 
         }
     }

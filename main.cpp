@@ -47,7 +47,7 @@ int main(int argc, char **argv)
     QtWebEngine::initialize();
 
     Application app(argc, argv);
-    QQuickStyle::setStyle("Material");
+//    QQuickStyle::setStyle("Material");
     QQmlApplicationEngine appEngine;
     Utils utils;
     appEngine.rootContext()->setContextProperty("utils", &utils);
